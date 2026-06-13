@@ -29,6 +29,23 @@ class ProduitController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate(
+            [
+                'nom'         => 'required|min:3',
+                'prix'        => 'required|numeric',
+                'quantite'    => 'required|integer',
+                'description' => 'nullable|max:500',
+            ],
+            [
+                'nom.required'      => 'Le nom du produit est obligatoire.',
+                'nom.min'           => 'Le nom doit contenir au moins 3 caractères.',
+                'prix.required'     => 'Le prix est obligatoire.',
+                'prix.numeric'      => 'Le prix doit être un nombre.',
+                'quantite.required' => 'La quantité est obligatoire.',
+                'quantite.integer'  => 'La quantité doit être un nombre entier.',
+                'description.max'   => 'La description ne peut pas dépasser 500 caractères.',
+            ]
+        );
         Produit::create($request->all());
         return redirect()->route('produits.index');
     }
@@ -55,6 +72,24 @@ class ProduitController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $request->validate(
+            [
+                'nom'         => 'required|min:3',
+                'prix'        => 'required|numeric',
+                'quantite'    => 'required|integer',
+                'description' => 'nullable|max:500',
+            ],
+            [
+                'nom.required'      => 'Le nom du produit est obligatoire.',
+                'nom.min'           => 'Le nom doit contenir au moins 3 caractères.',
+                'prix.required'     => 'Le prix est obligatoire.',
+                'prix.numeric'      => 'Le prix doit être un nombre.',
+                'quantite.required' => 'La quantité est obligatoire.',
+                'quantite.integer'  => 'La quantité doit être un nombre entier.',
+                'description.max'   => 'La description ne peut pas dépasser 500 caractères.',
+            ]
+        );
+        
         $produit = Produit::find($id);
         $produit->update($request->all());
         return redirect()->route('produits.index');
