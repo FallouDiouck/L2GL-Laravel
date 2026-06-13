@@ -47,7 +47,7 @@ class ProduitController extends Controller
             ]
         );
         Produit::create($request->all());
-        return redirect()->route('produits.index');
+        return redirect()->route('produits.index')->with('success', 'Produit ajouté avec succès !');
     }
 
     /**
@@ -89,10 +89,10 @@ class ProduitController extends Controller
                 'description.max'   => 'La description ne peut pas dépasser 500 caractères.',
             ]
         );
-        
+
         $produit = Produit::find($id);
         $produit->update($request->all());
-        return redirect()->route('produits.index');
+        return redirect()->route('produits.index')->with('success', 'Produit modifié avec succès !');
     }
 
     /**
@@ -102,6 +102,6 @@ class ProduitController extends Controller
     {
         $produit = Produit::find($id);
         $produit->delete();
-        return redirect()->route('produits.index');
+        return redirect()->route('produits.index')->with('success', 'Produit supprimé avec succès !');
     }
 }

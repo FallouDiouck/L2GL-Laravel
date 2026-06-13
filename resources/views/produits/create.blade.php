@@ -1,13 +1,7 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ajouter un produit</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
-    <div class="container mt-5" style="max-width:600px;">
+@extends('layouts.app')
+@section('title', 'Ajouter un produit')
+@section('content')
+    <div style="max-width:600px;">
         <h1 class="mb-4">Ajouter un produit</h1>
 
         <form action="{{ route('produits.store') }}" method="POST">
@@ -60,5 +54,4 @@
             <a href="{{ route('produits.index') }}" class="btn btn-secondary">Annuler</a>
         </form>
     </div>
-</body>
-</html>
+@endsection
