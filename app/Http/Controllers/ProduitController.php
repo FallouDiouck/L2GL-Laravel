@@ -11,10 +11,10 @@ class ProduitController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        $produits = Produit::all();
-        return view('produits.index', compact('produits'));
-    }
+{
+    $produits = Produit::paginate(5);
+    return view('produits.index', compact('produits'));
+}
 
     /**
      * Show the form for creating a new resource.
