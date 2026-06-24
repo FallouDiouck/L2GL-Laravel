@@ -11,18 +11,20 @@ class ProduitController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-{
-    $produits = Produit::paginate(5);
-    return view('produits.index', compact('produits'));
-}
+    {
+        $produits = Produit::paginate(5);
+        return view('produits.index', compact('produits'));
+    }
 
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        return view('produits.create');
+        $categories = \App\Models\Categorie::all();
+        return view('produits.create', compact('categories'));
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -64,7 +66,8 @@ class ProduitController extends Controller
     public function edit(string $id)
     {
         $produit = Produit::find($id);
-        return view('produits.edit', compact('produit'));
+        $categories = \App\Models\Categorie::all();
+        return view('produits.edit', compact('produit', 'categories'));
     }
 
     /**

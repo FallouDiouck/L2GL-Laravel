@@ -19,7 +19,7 @@
                             placeholder="Nom du produit"
                             class="w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 @error('nom') border-red-500 @enderror">
                         @error('nom')
-                            <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                        <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                         @enderror
                     </div>
 
@@ -29,10 +29,21 @@
                             placeholder="Description"
                             class="w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 @error('description') border-red-500 @enderror">{{ old('description') }}</textarea>
                         @error('description')
-                            <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                        <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                         @enderror
                     </div>
-
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Catégorie</label>
+                        <select name="categorie_id" class="w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+                            <option value="">Aucune catégorie</option>
+                            @foreach($categories as $categorie)
+                            <option value="{{ $categorie->id }}"
+                                {{ old('categorie_id') == $categorie->id ? 'selected' : '' }}>
+                                {{ $categorie->nom }}
+                            </option>
+                            @endforeach
+                        </select>
+                    </div>
                     <div class="grid grid-cols-2 gap-4 mb-4">
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-1">Prix</label>
@@ -41,7 +52,7 @@
                                 placeholder="0.00"
                                 class="w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 @error('prix') border-red-500 @enderror">
                             @error('prix')
-                                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                            <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                             @enderror
                         </div>
                         <div>
@@ -51,7 +62,7 @@
                                 placeholder="0"
                                 class="w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 @error('quantite') border-red-500 @enderror">
                             @error('quantite')
-                                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                            <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                             @enderror
                         </div>
                     </div>

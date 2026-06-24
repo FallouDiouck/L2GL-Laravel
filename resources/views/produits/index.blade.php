@@ -27,6 +27,7 @@
                             <th class="py-2 px-3">Description</th>
                             <th class="py-2 px-3">Prix</th>
                             <th class="py-2 px-3">Quantité</th>
+                            <th class="py-2 px-3">Catégorie</th> 
                             <th class="py-2 px-3">Actions</th>
                         </tr>
                     </thead>
@@ -37,6 +38,7 @@
                                 <td class="py-2 px-3">{{ $produit->description }}</td>
                                 <td class="py-2 px-3">{{ $produit->prix }} €</td>
                                 <td class="py-2 px-3">{{ $produit->quantite }}</td>
+                                <td class="py-2 px-3">{{ $produit->categorie ? $produit->categorie->nom : 'Aucune catégorie' }}</td>
                                 <td class="py-2 px-3 space-x-2">
                                     <a href="{{ route('produits.edit', $produit->id) }}" 
                                         class="bg-yellow-500 text-white px-3 py-1 rounded text-sm hover:bg-yellow-600">
