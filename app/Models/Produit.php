@@ -19,4 +19,8 @@ class Produit extends Model
     {
         return $this->belongsTo(Categorie::class);
     }
+
+    public function tags(){
+        return $this->belongsToMany(Tag::class);
+    }
 }
